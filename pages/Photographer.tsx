@@ -8,19 +8,19 @@ const Photographer: React.FC = () => {
        {/* Hero */}
        <section className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center">
         <ParallaxImage 
-          src="https://picsum.photos/1920/1080?random=4" 
+          src="/images/photography_hero.jpg"
           alt="Modern Architecture Interior" 
           className="absolute inset-0 w-full h-full brightness-75"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
         <div className="relative z-10 text-center px-6 text-white max-w-4xl">
           <FadeIn>
-            <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 tracking-wide drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl text-brand-dark font-serif font-bold mb-6 tracking-wide drop-shadow-lg">
               民泊・宿泊施設の<br className="md:hidden" />「売れる写真」を。
             </h1>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl font-light tracking-widest drop-shadow-md">
+            <p className="text-lg md:text-xl text-brand-dark font-light tracking-widest drop-shadow-md">
               建築×宿運営×写真。<br/>
               3つの視点で、予約率を上げる一枚を撮影します。
             </p>
@@ -35,7 +35,7 @@ const Photographer: React.FC = () => {
             <FadeIn>
               <div className="relative z-10">
                  <img 
-                  src="https://picsum.photos/800/800?random=5" 
+                  src="/images/top_photographer.jpg"
                   alt="Photographer working" 
                   className="w-full h-auto rounded-sm shadow-2xl"
                 />
@@ -53,7 +53,7 @@ const Photographer: React.FC = () => {
                </h2>
                <div className="space-y-6 text-gray-600 leading-8">
                  <p>
-                   私は単なるカメラマンではありません。大学で建築を学び、卒業後は古民家オーベルジュの運営にも携わりました。
+                   私は単なるカメラマンではありません。大学で建築を学び、卒業後は古民家オーベルジュの立ち上げにも携わりました。
                  </p>
                  <p>
                    「建物の構造的な魅力」と「宿泊者が求める体験」。
@@ -126,32 +126,32 @@ const Photographer: React.FC = () => {
                 <h2 className="text-3xl font-serif">その他の撮影サービス</h2>
               </div>
               <p className="text-sm text-gray-500 mt-4 md:mt-0 max-w-md text-right">
-                民泊撮影以外にも、ビジネスに必要なクリエイティブ全般に対応します。
+                民泊撮影以外にも、ビジネスに必要なクリエイティブ全般に対応します
               </p>
             </div>
           </FadeIn>
 
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
              <StaggerItem className="group relative aspect-square overflow-hidden bg-gray-200 cursor-pointer">
-               <img src="https://picsum.photos/600/600?random=6" alt="Portrait" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+               <img src="/images/portrait.jpg" alt="Portrait" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                  <span className="text-white font-serif text-xl tracking-widest border-b border-white pb-1">人物・プロフィール</span>
                </div>
              </StaggerItem>
              <StaggerItem className="group relative aspect-square overflow-hidden bg-gray-200 cursor-pointer">
-               <img src="https://picsum.photos/600/600?random=7" alt="Food" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+               <img src="/images/food.jpg" alt="Food" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                  <span className="text-white font-serif text-xl tracking-widest border-b border-white pb-1">料理・店舗</span>
                </div>
              </StaggerItem>
              <StaggerItem className="group relative aspect-square overflow-hidden bg-gray-200 cursor-pointer">
-               <img src="https://picsum.photos/600/600?random=8" alt="Drone" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+               <img src="/images/drone001.jpg" alt="Drone" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                  <span className="text-white font-serif text-xl tracking-widest border-b border-white pb-1">ドローン空撮</span>
                </div>
              </StaggerItem>
              <StaggerItem className="group relative aspect-square overflow-hidden bg-gray-200 cursor-pointer">
-               <img src="https://picsum.photos/600/600?random=9" alt="Video" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+               <img src="/images/pv.jpg" alt="Video" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                  <span className="text-white font-serif text-xl tracking-widest border-b border-white pb-1">PR動画制作</span>
                </div>

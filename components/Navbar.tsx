@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link to="/" className="text-2xl font-serif font-bold tracking-widest flex items-center gap-2 z-50 relative group">
-          HAJMARI
+          SJ DESIGN
           <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-dark transition-all duration-300 group-hover:w-full"></span>
         </Link>
 

@@ -42,7 +42,7 @@ const Home: React.FC = () => {
             <Link to="/design" className="group block relative h-[550px] overflow-hidden bg-white shadow-xl transition-all duration-700 hover:-translate-y-2">
               <div className="absolute inset-0 bg-gray-100 overflow-hidden">
                 <img 
-                  src="https://picsum.photos/800/1000?random=1" 
+                  src="/images/yellow.png"
                   alt="Branding Design" 
                   className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-110" 
                 />
@@ -72,7 +72,7 @@ const Home: React.FC = () => {
             <Link to="/photo" className="group block relative h-[550px] overflow-hidden bg-white shadow-xl transition-all duration-700 hover:-translate-y-2 md:translate-y-12">
                <div className="absolute inset-0 bg-gray-100 overflow-hidden">
                 <img 
-                  src="https://picsum.photos/800/1000?random=2" 
+                  src="/images/top_photographer.jpg"
                   alt="Architecture Photography" 
                   className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-110" 
                 />
@@ -113,7 +113,7 @@ const Home: React.FC = () => {
           <FadeIn delay={0.4}>
             <p className="text-gray-600 leading-9 mb-16 font-light">
               「良いデザイン」は、必ず「良い素材」から始まります。<br />
-              HAJMARI Designは、フォトグラファーとしての眼差しを起点に、<br className="hidden md:block"/>
+              SJ Designは、フォトグラファーとしての眼差しを起点に、<br className="hidden md:block"/>
               ブランディングの全領域を一気通貫で手がけるクリエイティブスタジオです。<br />
               <br />
               別々の業者に頼むちぐはぐさや、高額なコスト、長い納期。<br />

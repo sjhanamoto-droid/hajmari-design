@@ -19,7 +19,7 @@ const HajimariDesign: React.FC = () => {
         </div>
         <div className="absolute bottom-0 w-full h-[30vh] md:h-[40vh] max-w-5xl mx-auto left-0 right-0 translate-y-1/2 shadow-2xl">
           <ParallaxImage 
-            src="https://picsum.photos/1200/600?random=3" 
+            src="/images/branding_hero.jpg"
             alt="Branding Workshop" 
             className="w-full h-full"
           />
@@ -44,7 +44,7 @@ const HajimariDesign: React.FC = () => {
                     しかし、それぞれを別の業者に依頼すると、デザインのトーンが揃わず、コミュニケーションコストも膨大になります。
                   </p>
                   <p>
-                    HAJMARI Designは、「写真」を起点にすべてのデザインツールを一貫して制作。
+                    SJ DESIGNが提供するサービスHAJMARI Designは、「写真」を起点にすべてのデザインツールを一貫して制作。
                     世界観の統一された美しいブランドを、効率的に立ち上げることが可能です。
                   </p>
                 </div>
