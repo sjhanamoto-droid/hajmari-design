@@ -2,14 +2,30 @@ import React from 'react';
 import { FadeIn, StaggerContainer, StaggerItem } from '../components/Animators';
 
 const Portfolio: React.FC = () => {
-  // Mock data for portfolio items
-  const items = Array.from({ length: 12 }).map((_, i) => ({
-    id: i,
-    title: i % 2 === 0 ? "Hotel Renovation Project" : "Startup Branding Kit",
-    category: i % 2 === 0 ? "Photography / Architecture" : "Design / Identity",
-    imageUrl: `https://picsum.photos/800/${i % 3 === 0 ? '1000' : '600'}?random=${i + 20}`,
-    span: i % 3 === 0 ? 'row-span-2' : 'row-span-1'
-  }));
+  // Portfolio items with local images
+  const portfolioData = [
+    { title: "Wedding Photography", tags: "Wedding / Portrait / Ceremony" },
+    { title: "Hotel & Airbnb Visual Production", tags: "Interior / Photography / Video / Ad Creative" },
+    { title: "Hotel & Airbnb Visual Production", tags: "Interior / Photography / Video / Ad Creative" },
+    { title: "Pre-Wedding & Opening Movie", tags: "Wedding / Pre-shoot / Video" },
+    { title: "Store Photography", tags: "Shop / Interior / Branding" },
+    { title: "Wedding Photography", tags: "Wedding / Portrait / Ceremony" },
+    { title: "Store Photography", tags: "Shop / Interior / Branding" },
+    { title: "Store Photography", tags: "Shop / Interior / Branding" },
+    { title: "Store Photography", tags: "Shop / Interior / Branding" },
+    { title: "Family Portraits", tags: "Family / Lifestyle / Outdoor" },
+  ];
+
+  const items = portfolioData.map((data, i) => {
+    const imageNumber = String(i + 1).padStart(2, '0');
+    return {
+      id: i,
+      title: data.title,
+      tags: data.tags,
+      imageUrl: `/images/portfolio${imageNumber}.jpg`,
+      span: i % 3 === 0 ? 'row-span-2' : 'row-span-1'
+    };
+  });
 
   return (
     <div className="w-full pt-32 pb-24">
@@ -34,8 +50,8 @@ const Portfolio: React.FC = () => {
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-500 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100">
-                  <span className="text-brand-accent text-xs font-bold tracking-widest uppercase mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                    {item.category}
+                  <span className="text-brand-accent text-xs font-bold tracking-widest mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                    {item.tags}
                   </span>
                   <h3 className="text-white font-serif text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
                     {item.title}
@@ -52,7 +68,7 @@ const Portfolio: React.FC = () => {
               より詳細な実績（非公開案件含む）をご覧になりたい方は、<br/>
               お問い合わせフォームよりご連絡ください。
             </p>
-            <a href="mailto:contact@hajimari-design.com" className="inline-block bg-brand-dark text-white px-12 py-4 tracking-widest hover:bg-brand-accent transition-colors duration-300">
+            <a href="mailto:info@sjdesign" className="inline-block bg-brand-dark text-white px-12 py-4 tracking-widest hover:bg-brand-accent transition-colors duration-300">
               CONTACT US
             </a>
           </FadeIn>

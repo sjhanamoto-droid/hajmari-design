@@ -31,12 +31,12 @@ const Navbar: React.FC = () => {
 
   return (
     <header 
-      className={`fixed w-full z-50 transition-all duration-500 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
+      className={`fixed w-full z-40 transition-all duration-500 ${
+        scrolled || isOpen ? 'bg-white shadow-sm py-4' : 'bg-transparent py-6'
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-serif font-bold tracking-widest flex items-center gap-2 z-50 relative group">
+        <Link to="/" className="text-2xl font-serif font-bold tracking-widest flex items-center gap-2 relative group">
           SJ DESIGN
           <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-dark transition-all duration-300 group-hover:w-full"></span>
         </Link>
@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden z-50 p-2 text-brand-dark"
+          className="md:hidden p-2 text-brand-dark relative z-50"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Menu"
         >
