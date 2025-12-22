@@ -8,6 +8,7 @@ import HajimariDesign from './pages/HajimariDesign';
 import Photographer from './pages/Photographer';
 import Portfolio from './pages/Portfolio';
 import Profile from './pages/Profile';
+import ProfilePhotoPlan from './pages/ProfilePhotoPlan';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -44,6 +45,7 @@ const App: React.FC = () => {
               <Route path="/photo" element={<Photographer />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/plan/profile-photo" element={<ProfilePhotoPlan />} />
             </Routes>
           </main>
           <Footer />
