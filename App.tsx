@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
@@ -34,7 +34,7 @@ const App: React.FC = () => {
     <>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       
-      <HashRouter>
+      <BrowserRouter>
         <ScrollToTop />
         <div className={`flex flex-col min-h-screen font-sans antialiased text-brand-dark transition-opacity duration-1000 ${loading ? 'opacity-0' : 'opacity-100'}`}>
           <Navbar />
@@ -50,7 +50,7 @@ const App: React.FC = () => {
           </main>
           <Footer />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 };
