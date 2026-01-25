@@ -1,8 +1,40 @@
-import React from 'react';
-import { MapPin, Users, Globe } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { MapPin, Users, Globe, X } from 'lucide-react';
 import { FadeIn, ParallaxImage, StaggerContainer, StaggerItem } from '../components/Animators';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Photographer: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [showMore, setShowMore] = useState(false);
+
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedImage]);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedImage(null);
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, []);
+
+  const propertyImages = Array.from({ length: 26 }, (_, i) => ({
+    src: `/images/property/property${String(i + 1).padStart(2, '0')}.jpg`,
+    alt: `物件写真撮影事例${i + 1}`
+  }));
+
+  const displayedImages = showMore ? propertyImages : propertyImages.slice(0, 9);
+
   return (
     <div className="w-full">
        {/* Hero */}
@@ -53,7 +85,7 @@ const Photographer: React.FC = () => {
                </h2>
                <div className="space-y-6 text-gray-600 leading-8">
                  <p>
-                   私は単なるカメラマンではありません。大学で建築を学び、卒業後は古民家オーベルジュの立ち上げにも携わりました。
+                   ただ写真を撮るカメラマンではなく、建築を学び、古民家オーベルジュの立ち上げにも携わりました。
                  </p>
                  <p>
                    「建物の構造的な魅力」と「宿泊者が求める体験」。
@@ -64,7 +96,7 @@ const Photographer: React.FC = () => {
                <StaggerContainer className="space-y-4 mt-10">
                  <StaggerItem className="flex items-center gap-4 p-4 bg-brand-light rounded-lg">
                     <span className="w-3 h-3 bg-brand-accent rounded-full flex-shrink-0"></span>
-                    <span className="font-serif text-lg">建築学科卒の空間理解力</span>
+                    <span className="font-serif text-lg">建築設計/施工経験からの空間理解力</span>
                  </StaggerItem>
                  <StaggerItem className="flex items-center gap-4 p-4 bg-brand-light rounded-lg">
                     <span className="w-3 h-3 bg-brand-accent rounded-full flex-shrink-0"></span>
@@ -115,6 +147,91 @@ const Photographer: React.FC = () => {
           </StaggerContainer>
         </div>
       </section>
+
+      {/* Property Photography Examples */}
+      <section className="py-24 border-t border-gray-100">
+        <div className="container mx-auto px-6">
+          <FadeIn>
+            <div className="text-center mb-16">
+              <span className="text-xs font-bold text-gray-400 tracking-widest block mb-2">WORKS</span>
+              <h2 className="text-3xl md:text-4xl font-serif mb-4">物件写真の撮影事例</h2>
+              <div className="w-10 h-[2px] bg-brand-accent mx-auto"></div>
+            </div>
+          </FadeIn>
+
+          <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {displayedImages.map((item, idx) => (
+              <StaggerItem 
+                key={idx} 
+                className="group relative overflow-hidden bg-gray-200 rounded-sm cursor-pointer"
+              >
+                <div
+                  onClick={() => {
+                    console.log('Image clicked:', item.src);
+                    setSelectedImage(item.src);
+                  }}
+                  className="w-full h-full relative"
+                >
+                  <img 
+                    src={item.src} 
+                    alt={item.alt} 
+                    className="w-full h-[400px] object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 pointer-events-none"></div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          {!showMore && propertyImages.length > 9 && (
+            <div className="text-center mt-12">
+              <FadeIn>
+                <button
+                  onClick={() => setShowMore(true)}
+                  className="inline-block border border-brand-dark px-12 py-4 text-sm tracking-widest hover:bg-brand-dark hover:text-white transition-colors duration-300"
+                >
+                  MORE
+                </button>
+              </FadeIn>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Image Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative max-w-7xl max-h-[90vh] w-full h-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 z-10 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-colors duration-300 backdrop-blur-sm"
+                aria-label="閉じる"
+              >
+                <X size={24} />
+              </button>
+              <img
+                src={selectedImage}
+                alt="拡大画像"
+                className="w-full h-full object-contain"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Other Services */}
       <section className="py-24 border-t border-gray-100">
