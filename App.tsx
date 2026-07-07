@@ -4,11 +4,12 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
 import Home from './pages/Home';
-import HajimariDesign from './pages/HajimariDesign';
+import HajimariAI from './pages/HajimariAI';
 import Photographer from './pages/Photographer';
 import Portfolio from './pages/Portfolio';
 import Profile from './pages/Profile';
 import ProfilePhotoPlan from './pages/ProfilePhotoPlan';
+import Contact from './pages/Contact';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -41,11 +42,13 @@ const App: React.FC = () => {
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/design" element={<HajimariDesign />} />
+              <Route path="/service" element={<HajimariAI />} />
+              <Route path="/design" element={<HajimariAI />} />
               <Route path="/photo" element={<Photographer />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/plan/profile-photo" element={<ProfilePhotoPlan />} />
+              <Route path="/contact" element={<Contact />} />
             </Routes>
           </main>
           <Footer />

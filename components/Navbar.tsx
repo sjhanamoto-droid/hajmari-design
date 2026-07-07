@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Camera, PenTool, User } from 'lucide-react';
+import { Menu, X, Camera, Cpu, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
@@ -23,8 +23,8 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Top', path: '/' },
+    { name: 'HAJMARI', path: '/service' },
     { name: 'About', path: '/profile' },
-    { name: 'Branding', path: '/design' },
     { name: 'Photography', path: '/photo' },
     { name: 'Portfolio', path: '/portfolio' },
   ];
@@ -57,8 +57,8 @@ const Navbar: React.FC = () => {
               }`}></span>
             </Link>
           ))}
-          <Link 
-            to="/design" 
+          <Link
+            to="/contact"
             className="px-6 py-2 bg-brand-dark text-white text-xs tracking-widest hover:bg-brand-accent transition-colors duration-300"
           >
             CONTACT
@@ -93,11 +93,17 @@ const Navbar: React.FC = () => {
                   {link.name}
                 </Link>
               ))}
+              <Link
+                to="/contact"
+                className="px-8 py-3 bg-brand-dark text-white text-sm tracking-widest hover:bg-brand-accent transition-colors duration-300"
+              >
+                CONTACT
+              </Link>
               <div className="pt-8 border-t border-gray-200 w-24 mx-auto"></div>
               <div className="flex gap-8">
-                <Link to="/design" className="flex flex-col items-center gap-2 text-gray-500 hover:text-brand-dark transition-colors">
-                  <PenTool size={24} />
-                  <span className="text-xs">Design</span>
+                <Link to="/service" className="flex flex-col items-center gap-2 text-gray-500 hover:text-brand-dark transition-colors">
+                  <Cpu size={24} />
+                  <span className="text-xs">HAJMARI</span>
                 </Link>
                 <Link to="/photo" className="flex flex-col items-center gap-2 text-gray-500 hover:text-brand-dark transition-colors">
                   <Camera size={24} />

@@ -50,6 +50,38 @@ export const ParallaxImage: React.FC<{ src: string; alt: string; className?: str
   );
 };
 
+// Highlighted emphasis text — marker sweep + fade-up when scrolled into view
+export const HighlightText: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({
+  children,
+  className = "",
+  delay = 0.2,
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-15% 0px" });
+
+  return (
+    <span ref={ref} className={`relative inline-block ${className}`}>
+      {/* marker highlight sweeping in behind the text */}
+      <motion.span
+        aria-hidden
+        className="absolute left-0 right-0 bottom-[0.08em] h-[0.5em] bg-brand-accent/30 rounded-sm origin-left"
+        initial={{ scaleX: 0 }}
+        animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+        transition={{ duration: 0.7, delay: delay + 0.2, ease: [0.22, 1, 0.36, 1] }}
+      />
+      {/* the emphasized text itself */}
+      <motion.span
+        className="relative z-10 text-brand-dark"
+        initial={{ opacity: 0, y: 12 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+        transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      >
+        {children}
+      </motion.span>
+    </span>
+  );
+};
+
 // Stagger container for lists
 export const StaggerContainer: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = "" }) => {
   const ref = useRef(null);
