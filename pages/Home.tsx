@@ -6,7 +6,7 @@ import {
   Cpu,
   Camera,
   HeartHandshake,
-  HardHat,
+  Eye,
   LifeBuoy,
   Rocket,
   Fingerprint,
@@ -46,9 +46,9 @@ const reasons = [
     text: 'これから事業を始める方、会社を立ち上げたばかりの方。何が必要かわからない段階から、一緒に考えます。',
   },
   {
-    Icon: HardHat,
+    Icon: Eye,
     title: '現場を知っているから、伝わる。',
-    text: '建設業での経験があるからこそ、アナログな業態の“つまずきポイント”がわかります。机上論ではない、現場目線のAI活用・業務改善をご提案します。',
+    text: '写真撮影をはじめ、これまで多種多様な現場・職種を経験してきました。だからこそ、机上の空論ではなく、現場が本当に見える目線で、AI活用・業務改善をご提案できます。',
   },
   {
     Icon: LifeBuoy,
@@ -61,7 +61,7 @@ const reasons = [
 const targets = [
   { Icon: Rocket, text: 'これから事業を始める方・会社を立ち上げたばかりの方' },
   { Icon: Fingerprint, text: '「他社と似たサイトにしたくない」方' },
-  { Icon: Wrench, text: '建設業など、アナログな業態でAIを使った業務改善をしたい方' },
+  { Icon: Wrench, text: 'アナログな業態や現場のある仕事で、AIを使った業務改善をしたい方' },
   { Icon: Compass, text: 'AIを導入したいが、何から始めればいいか分からない方' },
 ];
 
