@@ -68,7 +68,7 @@ const Portfolio: React.FC = () => {
               より詳細な実績（非公開案件含む）をご覧になりたい方は、<br/>
               お問い合わせフォームよりご連絡ください。
             </p>
-            <a href="mailto:info@sjdesign" className="inline-block bg-brand-dark text-white px-12 py-4 tracking-widest hover:bg-brand-accent transition-colors duration-300">
+            <a href="mailto:info@sjdesign.jp" className="inline-block bg-brand-dark text-white px-12 py-4 tracking-widest hover:bg-brand-accent transition-colors duration-300">
               CONTACT US
             </a>
           </FadeIn>

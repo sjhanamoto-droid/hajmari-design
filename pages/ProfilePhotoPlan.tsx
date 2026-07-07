@@ -251,7 +251,7 @@ const ProfilePhotoPlan: React.FC = () => {
           </p>
           <a
             className="inline-block bg-brand-dark text-white px-10 py-3 tracking-widest text-sm hover:bg-brand-accent transition-colors duration-300"
-            href="mailto:info@sjdesign"
+            href="mailto:info@sjdesign.jp"
           >
             CONTACT US
           </a>

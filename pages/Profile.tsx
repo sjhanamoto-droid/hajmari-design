@@ -37,7 +37,7 @@ const Profile: React.FC = () => {
               </h2>
               <div className="space-y-6 text-gray-600 leading-8 font-light text-justify">
                 <p>
-                  SJ Design 代表の花本昌樹です。
+                  HAJMARI 代表の花本昌樹です。
                   私は「写真」というフィルターを通して、空間やブランドが持つ本来の価値を可視化することを生業としています。
                 </p>
                 <p>
@@ -77,7 +77,7 @@ const Profile: React.FC = () => {
                   </li>
                   <li className="flex gap-4">
                     <span className="font-bold w-24 flex-shrink-0">2023</span>
-                    <span>SJDESIGN 設立</span>
+                    <span>HAJMARI 設立</span>
                   </li>
                 </ul>
               </div>
