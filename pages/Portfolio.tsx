@@ -22,7 +22,7 @@ const Portfolio: React.FC = () => {
       id: i,
       title: data.title,
       tags: data.tags,
-      imageUrl: `/images/portfolio${imageNumber}.jpg`,
+      imageUrl: `/images/portfolio${imageNumber}.webp`,
       span: i % 3 === 0 ? 'row-span-2' : 'row-span-1'
     };
   });

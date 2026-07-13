@@ -29,7 +29,7 @@ const Photographer: React.FC = () => {
   }, []);
 
   const propertyImages = Array.from({ length: 26 }, (_, i) => ({
-    src: `/images/property/property${String(i + 1).padStart(2, '0')}.jpg`,
+    src: `/images/property/property${String(i + 1).padStart(2, '0')}.webp`,
     alt: `物件写真撮影事例${i + 1}`
   }));
 
@@ -40,7 +40,7 @@ const Photographer: React.FC = () => {
        {/* Hero */}
        <section className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center">
         <ParallaxImage 
-          src="/images/photography_hero.jpg"
+          src="/images/photography_hero.webp"
           alt="Modern Architecture Interior" 
           className="absolute inset-0 w-full h-full brightness-75"
         />
@@ -67,7 +67,7 @@ const Photographer: React.FC = () => {
             <FadeIn>
               <div className="relative z-10">
                  <img 
-                  src="/images/top_photographer.jpg"
+                  src="/images/top_photographer.webp"
                   alt="Photographer working" 
                   className="w-full h-auto rounded-sm shadow-2xl"
                 />
@@ -250,25 +250,25 @@ const Photographer: React.FC = () => {
 
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
              <StaggerItem className="group relative aspect-square overflow-hidden bg-gray-200 cursor-pointer">
-               <img src="/images/portrait.jpg" alt="Portrait" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+               <img src="/images/portrait.webp" alt="Portrait" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                  <span className="text-white font-serif text-xl tracking-widest border-b border-white pb-1">人物・プロフィール</span>
                </div>
              </StaggerItem>
              <StaggerItem className="group relative aspect-square overflow-hidden bg-gray-200 cursor-pointer">
-               <img src="/images/food.jpg" alt="Food" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+               <img src="/images/food.webp" alt="Food" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                  <span className="text-white font-serif text-xl tracking-widest border-b border-white pb-1">料理・店舗</span>
                </div>
              </StaggerItem>
              <StaggerItem className="group relative aspect-square overflow-hidden bg-gray-200 cursor-pointer">
-               <img src="/images/drone001.jpg" alt="Drone" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+               <img src="/images/drone001.webp" alt="Drone" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                  <span className="text-white font-serif text-xl tracking-widest border-b border-white pb-1">ドローン空撮</span>
                </div>
              </StaggerItem>
              <StaggerItem className="group relative aspect-square overflow-hidden bg-gray-200 cursor-pointer">
-               <img src="/images/pv.jpg" alt="Video" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+               <img src="/images/pv.webp" alt="Video" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                  <span className="text-white font-serif text-xl tracking-widest border-b border-white pb-1">PR動画制作</span>
                </div>

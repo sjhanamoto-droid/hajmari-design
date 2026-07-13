@@ -7,7 +7,7 @@ const ProfilePhotoPlan: React.FC = () => {
       {/* Hero */}
       <section className="relative w-full overflow-hidden">
         <img
-          src="/images/portrait.jpg"
+          src="/images/portrait.webp"
           alt="Profile photography"
           className="w-full h-[320px] md:h-[420px] object-cover"
         />
@@ -97,14 +97,14 @@ const ProfilePhotoPlan: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-4">
             <div className="w-full overflow-hidden rounded-sm">
               <img
-                src="/images/profile001.jpg"
+                src="/images/profile001.webp"
                 alt="プロフィール写真撮影の実例1"
                 className="w-full h-[300px] md:h-[400px] object-cover"
               />
             </div>
             <div className="w-full overflow-hidden rounded-sm">
               <img
-                src="/images/profile002.jpg"
+                src="/images/profile002.webp"
                 alt="プロフィール写真撮影の実例2"
                 className="w-full h-[300px] md:h-[400px] object-cover"
               />
@@ -155,14 +155,14 @@ const ProfilePhotoPlan: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-4">
             <div className="w-full overflow-hidden rounded-sm">
               <img
-                src="/images/profile003.jpg"
+                src="/images/profile003.webp"
                 alt="プロフィール写真撮影の実例3"
                 className="w-full h-[300px] md:h-[400px] object-cover"
               />
             </div>
             <div className="w-full overflow-hidden rounded-sm">
               <img
-                src="/images/profile004.jpg"
+                src="/images/profile004.webp"
                 alt="プロフィール写真撮影の実例4"
                 className="w-full h-[300px] md:h-[400px] object-cover"
               />

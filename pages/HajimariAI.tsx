@@ -33,10 +33,10 @@ const steps = [
 
 // 開発事例
 const works = [
-  { name: 'Knock', image: '/images/サービス紹介_knock.png', alt: 'Knock｜建設業のための電子受発注システム' },
-  { name: 'Mielba', image: '/images/サービス紹介_Mielba.png', alt: 'Mielba｜建設業の現場情報管理・顧客管理システム' },
-  { name: 'みずたま顧問', image: '/images/サービス紹介_みずたま顧問.png', alt: 'みずたま顧問｜バックエンドの人脈管理システム' },
-  { name: 'カンタン現金管理', image: '/images/サービス紹介_カンタン現金管理.png', alt: 'カンタン現金管理｜現金の記録をスマホでカンタンに' },
+  { name: 'Knock', image: '/images/サービス紹介_knock.webp', alt: 'Knock｜建設業のための電子受発注システム' },
+  { name: 'Mielba', image: '/images/サービス紹介_Mielba.webp', alt: 'Mielba｜建設業の現場情報管理・顧客管理システム' },
+  { name: 'みずたま顧問', image: '/images/サービス紹介_みずたま顧問.webp', alt: 'みずたま顧問｜バックエンドの人脈管理システム' },
+  { name: 'カンタン現金管理', image: '/images/サービス紹介_カンタン現金管理.webp', alt: 'カンタン現金管理｜現金の記録をスマホでカンタンに' },
 ];
 
 // 提供できること

@@ -7,7 +7,7 @@ const Profile: React.FC = () => {
       {/* Hero Section */}
       <div className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden flex items-center justify-center">
         <ParallaxImage 
-          src="/images/about_hero.jpg" 
+          src="/images/about_hero.webp" 
           alt="Masaki Hanamoto Portrait" 
           className="absolute inset-0 w-full h-full"
         />
@@ -88,7 +88,7 @@ const Profile: React.FC = () => {
           <div className="w-full md:w-2/5 md:sticky md:top-32">
             <FadeIn delay={0.3}>
               <img 
-                src="/images/about_profile.jpg"
+                src="/images/about_profile.webp"
                 alt="Working" 
                 className="w-full h-auto shadow-xl mb-6"
               />

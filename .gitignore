@@ -32,3 +32,6 @@ dist-ssr
 # Build outputs
 build
 .cache
+
+# Original images backup (pre-WebP, kept locally, not deployed)
+image-backup
