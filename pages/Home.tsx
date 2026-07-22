@@ -14,7 +14,15 @@ import {
   Compass,
   Handshake,
 } from 'lucide-react';
-import { FadeIn, StaggerContainer, StaggerItem, HighlightText } from '../components/Animators';
+import { FadeIn, StaggerContainer, StaggerItem, HighlightText, ParallaxImage } from '../components/Animators';
+
+// 自社撮影素材（コンセプトの根拠として提示）
+const originalShots = [
+  { src: '/images/top_photographer.webp', label: '空間・建築' },
+  { src: '/images/food.webp', label: '料理・店舗' },
+  { src: '/images/portrait.webp', label: '人物・ライフ' },
+  { src: '/images/portfolio07.webp', label: 'ショップ・カフェ' },
+];
 
 // ③ 提供価値（3本柱）
 const values = [
@@ -77,40 +85,72 @@ const Home: React.FC = () => {
   return (
     <div className="w-full overflow-hidden">
       {/* Hero — コンセプト */}
-      <section className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-brand-light">
+      <section className="relative min-h-screen w-full overflow-hidden flex items-center bg-brand-light">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-40 -right-40 w-[36rem] h-[36rem] rounded-full bg-brand-accent/10 blur-3xl"></div>
           <div className="absolute -bottom-40 -left-40 w-[32rem] h-[32rem] rounded-full bg-brand-dark/5 blur-3xl"></div>
         </div>
 
-        <div className="relative z-10 flex flex-col items-center text-center px-6 max-w-4xl mx-auto pt-20">
-          <FadeIn>
-            <span className="inline-block text-xs md:text-sm tracking-[0.35em] text-brand-accent font-medium mb-8">
-              FOR STARTUPS
-            </span>
-          </FadeIn>
-          <FadeIn delay={0.15}>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium leading-relaxed md:leading-tight mb-10 text-brand-dark">
-              はじめる会社の、<br />
-              いちばん頼れる味方。
-            </h1>
-          </FadeIn>
-          <FadeIn delay={0.3}>
-            <p className="text-sm md:text-base leading-8 text-gray-600 mb-12 max-w-2xl">
-              AIを活用したシステム開発とWEBサイト制作。<br />
-              写真も映像も自社で撮るから、“どこかで見たようなサイト”にはなりません。<br className="hidden md:block" />
-              あなたの事業のはじまりを、速く・安く・高品質に支えます。
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.45}>
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 px-10 py-4 bg-brand-dark text-white text-sm tracking-widest hover:bg-brand-accent transition-colors duration-300"
-            >
-              無料で相談する
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </FadeIn>
+        <div className="relative z-10 container mx-auto px-6 pt-28 pb-24 md:py-24">
+          <div className="grid md:grid-cols-2 gap-14 lg:gap-20 items-center">
+            {/* コピー */}
+            <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl mx-auto md:mx-0">
+              <FadeIn>
+                <span className="inline-block text-xs md:text-sm tracking-[0.35em] text-brand-accent font-medium mb-8">
+                  FOR STARTUPS
+                </span>
+              </FadeIn>
+              <FadeIn delay={0.15}>
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium leading-relaxed md:leading-tight mb-10 text-brand-dark">
+                  はじめる会社の、<br />
+                  いちばん頼れる味方。
+                </h1>
+              </FadeIn>
+              <FadeIn delay={0.3}>
+                <p className="text-sm md:text-base leading-8 text-gray-600 mb-12 max-w-lg">
+                  AIを活用したシステム開発とWEBサイト制作。<br />
+                  写真も映像も自社で撮るから、“どこかで見たようなサイト”にはなりません。<br className="hidden md:block" />
+                  あなたの事業のはじまりを、速く・安く・高品質に支えます。
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.45}>
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center gap-2 px-10 py-4 bg-brand-dark text-white text-sm tracking-widest hover:bg-brand-accent transition-colors duration-300"
+                >
+                  無料で相談する
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </FadeIn>
+            </div>
+
+            {/* ビジュアル — 自社撮影の写真＋ドローン空撮 */}
+            <FadeIn delay={0.35} className="w-full">
+              <div className="relative max-w-sm mx-auto md:max-w-none md:mr-6">
+                <div className="relative z-10 aspect-[4/5] overflow-hidden shadow-2xl">
+                  <img
+                    src="/images/photography_hero.webp"
+                    alt="自社で撮影した建築・空間写真"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* 装飾フレーム */}
+                <div className="hidden md:block absolute -bottom-6 -right-6 w-full h-full border-2 border-brand-accent z-0"></div>
+                {/* ドローン空撮のインセット */}
+                <div className="absolute -bottom-6 -left-5 md:-bottom-10 md:-left-10 w-28 sm:w-36 lg:w-48 aspect-square overflow-hidden shadow-xl border-4 border-brand-light z-20">
+                  <img
+                    src="/images/drone001.webp"
+                    alt="ドローンによる空撮"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* バッジ */}
+                <div className="absolute top-3 left-3 md:-top-3 md:-left-3 z-20 bg-brand-dark/90 backdrop-blur-sm text-white text-[10px] tracking-[0.2em] px-4 py-2">
+                  ALL ORIGINAL
+                </div>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -134,6 +174,31 @@ const Home: React.FC = () => {
               <br />
               私たちは、自社で撮影する写真・映像・ドローン素材を組み合わせることで、<br className="hidden md:block" />
               安く・速く・高品質なうえに、<span className="text-brand-dark font-normal">“あなただけ”</span>のWEBサイトをつくります。
+            </p>
+          </FadeIn>
+        </div>
+
+        {/* 自社撮影素材のギャラリー（コンセプトの証明） */}
+        <div className="container mx-auto px-6 mt-20 md:mt-24">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-6xl mx-auto">
+            {originalShots.map(({ src, label }) => (
+              <StaggerItem key={src} className="group relative aspect-[3/4] overflow-hidden bg-brand-light">
+                <img
+                  src={src}
+                  alt={label}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                <span className="absolute bottom-3 left-3 text-white text-xs md:text-sm font-serif tracking-wider drop-shadow">
+                  {label}
+                </span>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+          <FadeIn>
+            <p className="text-center text-xs text-gray-400 mt-6 tracking-wide">
+              すべて自社で撮影・制作した素材です。
             </p>
           </FadeIn>
         </div>
@@ -274,6 +339,24 @@ const Home: React.FC = () => {
                 </p>
               </div>
             </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 自社撮影のパララックスバンド */}
+      <section className="relative h-[52vh] md:h-[60vh] w-full overflow-hidden">
+        <ParallaxImage
+          src="/images/portfolio05.webp"
+          alt="自社で手がけた空間演出の撮影"
+          className="absolute inset-0 w-full h-full"
+        />
+        <div className="absolute inset-0 bg-brand-dark/55"></div>
+        <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
+          <FadeIn>
+            <p className="text-white font-serif text-xl md:text-3xl leading-relaxed md:leading-loose drop-shadow-lg">
+              “らしさ”は、既製品では生まれない。<br />
+              だから私たちは、自分たちの手で撮る。
+            </p>
           </FadeIn>
         </div>
       </section>

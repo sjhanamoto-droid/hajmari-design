@@ -39,6 +39,14 @@ const works = [
   { name: 'カンタン現金管理', image: '/images/サービス紹介_カンタン現金管理.webp', alt: 'カンタン現金管理｜現金の記録をスマホでカンタンに' },
 ];
 
+// 撮影・映像クリエイティブ（自社対応）
+const creative = [
+  { image: '/images/photography_hero.webp', label: '空間・建築撮影' },
+  { image: '/images/food.webp', label: '料理・店舗撮影' },
+  { image: '/images/drone001.webp', label: 'ドローン空撮' },
+  { image: '/images/pv.webp', label: '映像・PR動画' },
+];
+
 // 提供できること
 const services = [
   'AIを活用した業務効率化・業務改善システムの開発',
@@ -99,6 +107,14 @@ const HajimariAI: React.FC = () => {
             </FadeIn>
 
             <FadeIn delay={0.2}>
+              <div className="mb-6 aspect-[4/3] overflow-hidden shadow-lg">
+                <img
+                  src="/images/property/property05.webp"
+                  alt="自社で撮影した空間写真"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div className="bg-brand-light p-8 md:p-10">
                 <p className="text-xs tracking-widest text-brand-accent font-medium mb-6">HAJMARI が関わる領域</p>
                 <StaggerContainer className="space-y-4">
@@ -169,6 +185,51 @@ const HajimariAI: React.FC = () => {
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Creative — 撮影・映像も自社で */}
+      <section className="py-24 md:py-32 bg-brand-light">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <FadeIn>
+              <span className="text-xs font-bold tracking-[0.2em] text-brand-accent mb-4 block">CREATIVE</span>
+              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">写真も、映像も、自社で。</h2>
+              <p className="text-sm text-gray-500 mt-6 max-w-xl mx-auto leading-relaxed">
+                WEBに使う素材は、外注のストック写真ではありません。撮影・映像・ドローンまで一貫して自社対応。
+                だから“どこかで見た”にならない、あなただけのサイトになります。
+              </p>
+            </FadeIn>
+          </div>
+
+          <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 max-w-6xl mx-auto">
+            {creative.map(({ image, label }) => (
+              <StaggerItem key={image} className="group relative aspect-[3/4] overflow-hidden bg-white">
+                <img
+                  src={image}
+                  alt={label}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                <span className="absolute bottom-3 left-3 text-white text-xs md:text-sm font-serif tracking-wider drop-shadow">
+                  {label}
+                </span>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          <FadeIn>
+            <div className="text-center mt-12">
+              <Link
+                to="/photo"
+                className="group inline-flex items-center gap-2 border border-brand-dark px-10 py-4 text-sm tracking-widest hover:bg-brand-dark hover:text-white transition-colors duration-300"
+              >
+                撮影・映像の実績を見る
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
