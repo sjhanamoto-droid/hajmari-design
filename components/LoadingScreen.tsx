@@ -16,11 +16,11 @@ const LoadingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => 
         className="text-center"
       >
         <h1 className="text-3xl md:text-4xl font-serif font-bold tracking-[0.2em] text-brand-dark">
-          SJ
+          HAJMARI
         </h1>
         <div className="w-12 h-[1px] bg-brand-accent mx-auto my-4"></div>
         <p className="text-xs tracking-widest text-gray-500 uppercase">
-          Design & Photography
+          AI System Development & Photography
         </p>
       </motion.div>
     </motion.div>
