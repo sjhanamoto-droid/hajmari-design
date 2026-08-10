@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Send, CheckCircle2, Mail } from 'lucide-react';
 import { FadeIn } from '../components/Animators';
+
+// Web3Forms アクセスキー（https://web3forms.com で無料取得。フロントに公開して問題ない値です）
+// 環境変数 VITE_WEB3FORMS_ACCESS_KEY があればそちらを優先します。
+const WEB3FORMS_ACCESS_KEY =
+  import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? '8d0fde71-6b27-4451-8fec-ec4d3daac65e';
 
 const CONSULT_OPTIONS = [
   'WEBサイト制作',
@@ -42,6 +48,9 @@ const Contact: React.FC = () => {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState('');
+  const [honeypot, setHoneypot] = useState('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -75,27 +84,54 @@ const Contact: React.FC = () => {
     return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
+    // ハニーポットに入力があればbotとみなし、送信せず完了扱い
+    if (honeypot) {
+      setSubmitted(true);
+      return;
+    }
 
-    const subject = `HAJMARI お問い合わせ（${form.name} 様）`;
-    const body = [
-      `【お名前】${form.name}`,
-      `【会社名・屋号】${form.company || '（未記入）'}`,
-      `【メールアドレス】${form.email}`,
-      `【電話番号】${form.phone || '（未記入）'}`,
-      `【ご相談内容】${form.consult.join(' / ')}`,
-      `【ご予算感】${form.budget || '（未選択）'}`,
-      '',
-      '【お問い合わせ内容】',
-      form.message,
-    ].join('\n');
+    setSending(true);
+    setSendError('');
 
-    window.location.href = `mailto:info@sjdesign.jp?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `HAJMARI お問い合わせ（${form.name} 様）`,
+          from_name: 'HAJMARI お問い合わせフォーム',
+          // Web3Formsは email フィールドを返信先(Reply-To)として自動設定します
+          email: form.email,
+          'お名前': form.name,
+          '会社名・屋号': form.company || '（未記入）',
+          'メールアドレス': form.email,
+          '電話番号': form.phone || '（未記入）',
+          'ご相談内容': form.consult.join(' / ') || '（未選択）',
+          'ご予算感': form.budget || '（未選択）',
+          'お問い合わせ内容': form.message,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+        setForm(initialState);
+      } else {
+        setSendError(
+          data.message || '送信に失敗しました。お手数ですが時間をおいて再度お試しください。'
+        );
+      }
+    } catch {
+      setSendError('送信に失敗しました。通信環境をご確認のうえ、再度お試しください。');
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputBase =
@@ -133,31 +169,34 @@ const Contact: React.FC = () => {
                 <div className="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-accent">
                   <CheckCircle2 size={34} />
                 </div>
-                <h2 className="text-2xl font-serif mb-4 text-brand-dark">メールソフトを起動しました</h2>
+                <h2 className="text-2xl font-serif mb-4 text-brand-dark">お問い合わせを送信しました</h2>
                 <p className="text-sm text-gray-600 leading-relaxed mb-8">
-                  ご入力内容を反映したメールが開きます。<br />
-                  そのまま送信してください。内容を確認のうえ、折り返しご連絡いたします。
+                  お問い合わせありがとうございます。<br />
+                  内容を確認のうえ、担当者より折り返しご連絡いたします。
                 </p>
-                <p className="text-xs text-gray-400 leading-relaxed">
-                  ※ メールソフトが開かない場合は、お手数ですが下記までご連絡ください。<br />
-                  <a href="mailto:info@sjdesign.jp" className="text-brand-accent hover:underline">
-                    info@sjdesign.jp
-                  </a>
-                </p>
-                <button
-                  onClick={() => {
-                    setSubmitted(false);
-                    setForm(initialState);
-                  }}
-                  className="mt-8 text-xs tracking-widest text-gray-500 hover:text-brand-dark transition-colors underline"
+                <Link
+                  to="/"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-dark text-white text-sm tracking-widest hover:bg-brand-accent transition-colors duration-300"
                 >
-                  もう一度入力する
-                </button>
+                  トップページに戻る
+                </Link>
               </div>
             </FadeIn>
           ) : (
             <FadeIn>
               <form onSubmit={handleSubmit} noValidate className="bg-white p-8 md:p-12 shadow-sm space-y-8">
+                {/* スパム対策（ハニーポット：人には見えません。通常は空のまま） */}
+                <input
+                  type="text"
+                  name="botcheck"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  className="hidden"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+
                 {/* Name / Company */}
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -279,16 +318,22 @@ const Contact: React.FC = () => {
                   {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
                 </div>
 
+                {sendError && (
+                  <p className="text-sm text-red-500 text-center leading-relaxed">{sendError}</p>
+                )}
+
                 <button
                   type="submit"
-                  className="group w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-dark text-white text-sm tracking-widest hover:bg-brand-accent transition-colors duration-300"
+                  disabled={sending}
+                  className="group w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-dark text-white text-sm tracking-widest hover:bg-brand-accent transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  この内容で相談する
-                  <Send size={16} className="group-hover:translate-x-1 transition-transform" />
+                  {sending ? '送信中…' : 'この内容で相談する'}
+                  {!sending && <Send size={16} className="group-hover:translate-x-1 transition-transform" />}
                 </button>
 
                 <p className="text-xs text-gray-400 text-center leading-relaxed">
-                  送信ボタンを押すと、ご入力内容を反映したメールソフトが起動します。
+                  送信ボタンを押すと、ご入力内容がそのまま運営者へ送信されます。<br className="hidden sm:block" />
+                  通常1〜2営業日以内にご返信いたします。
                 </p>
               </form>
             </FadeIn>

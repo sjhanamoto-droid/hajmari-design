@@ -96,11 +96,6 @@ const Home: React.FC = () => {
             {/* コピー */}
             <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl mx-auto md:mx-0">
               <FadeIn>
-                <span className="inline-block text-xs md:text-sm tracking-[0.35em] text-brand-accent font-medium mb-8">
-                  FOR STARTUPS
-                </span>
-              </FadeIn>
-              <FadeIn delay={0.15}>
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium leading-relaxed md:leading-tight mb-10 text-brand-dark">
                   はじめる会社の、<br />
                   いちばん頼れる味方。
@@ -176,6 +171,54 @@ const Home: React.FC = () => {
               安く・速く・高品質なうえに、<span className="text-brand-dark font-normal">“あなただけ”</span>のWEBサイトをつくります。
             </p>
           </FadeIn>
+
+          {/* 料金ダイジェスト */}
+          <FadeIn delay={0.5}>
+            <div className="max-w-2xl mx-auto mt-16 space-y-6">
+              {/* WEBサイト制作 */}
+              <div className="bg-brand-light border border-brand-accent/20 p-8 md:p-12">
+                <span className="text-xs font-bold tracking-[0.2em] text-brand-accent block mb-6">WEBサイト制作</span>
+                <div className="flex items-end justify-center gap-x-3 gap-y-2 flex-wrap">
+                  <span className="flex items-baseline gap-1 text-brand-dark">
+                    <span className="text-sm md:text-base">初期費用</span>
+                    <span className="text-4xl md:text-5xl font-bold">0</span>
+                    <span className="text-lg md:text-xl font-bold">円</span>
+                  </span>
+                  <span className="text-gray-300 text-2xl md:text-3xl font-light px-1 md:px-2">＋</span>
+                  <span className="flex items-baseline gap-1 text-brand-dark">
+                    <span className="text-sm md:text-base">月額</span>
+                    <span className="text-4xl md:text-5xl font-bold">9,800</span>
+                    <span className="text-lg md:text-xl font-bold">円</span>
+                    <span className="text-lg text-gray-500">〜</span>
+                  </span>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-center gap-x-10 gap-y-3">
+                  <span className="text-sm text-gray-600">
+                    写真撮影のみ <span className="text-lg font-bold text-brand-dark ml-1">5万円〜</span>
+                  </span>
+                  <span className="hidden sm:inline text-gray-200">|</span>
+                  <span className="text-sm text-gray-600">
+                    WEB制作とセット <span className="text-lg font-bold text-brand-dark ml-1">3万円〜</span>
+                  </span>
+                </div>
+              </div>
+
+              {/* オリジナルシステム開発 */}
+              <div className="bg-brand-light border border-brand-accent/20 p-6 md:p-8">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-x-5 gap-y-2">
+                  <span className="text-xs font-bold tracking-[0.2em] text-brand-accent">オリジナルシステム開発</span>
+                  <span className="flex items-baseline gap-1 text-brand-dark">
+                    <span className="text-3xl md:text-4xl font-bold">10</span>
+                    <span className="text-base font-bold">万円</span>
+                    <span className="text-base text-gray-500">〜</span>
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-400 text-center">※価格は目安です。詳細な料金プランは別途ご案内します。</p>
+            </div>
+          </FadeIn>
         </div>
 
         {/* 自社撮影素材のギャラリー（コンセプトの証明） */}
@@ -196,11 +239,6 @@ const Home: React.FC = () => {
               </StaggerItem>
             ))}
           </StaggerContainer>
-          <FadeIn>
-            <p className="text-center text-xs text-gray-400 mt-6 tracking-wide">
-              すべて自社で撮影・制作した素材です。
-            </p>
-          </FadeIn>
         </div>
       </section>
 
