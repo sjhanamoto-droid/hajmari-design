@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Send, CheckCircle2, Mail } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Send, Mail } from 'lucide-react';
 import { FadeIn } from '../components/Animators';
 
 // Web3Forms アクセスキー（https://web3forms.com で無料取得。フロントに公開して問題ない値です）
@@ -45,9 +45,9 @@ const initialState: FormState = {
 };
 
 const Contact: React.FC = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState('');
   const [honeypot, setHoneypot] = useState('');
@@ -89,7 +89,7 @@ const Contact: React.FC = () => {
     if (!validate()) return;
     // ハニーポットに入力があればbotとみなし、送信せず完了扱い
     if (honeypot) {
-      setSubmitted(true);
+      navigate('/thanks');
       return;
     }
 
@@ -120,8 +120,8 @@ const Contact: React.FC = () => {
       });
       const data = await res.json();
       if (data.success) {
-        setSubmitted(true);
         setForm(initialState);
+        navigate('/thanks');
       } else {
         setSendError(
           data.message || '送信に失敗しました。お手数ですが時間をおいて再度お試しください。'
@@ -163,181 +163,160 @@ const Contact: React.FC = () => {
       {/* Form */}
       <section className="pb-28">
         <div className="container mx-auto px-6 max-w-2xl">
-          {submitted ? (
-            <FadeIn>
-              <div className="bg-white p-10 md:p-14 text-center shadow-sm">
-                <div className="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-accent">
-                  <CheckCircle2 size={34} />
-                </div>
-                <h2 className="text-2xl font-serif mb-4 text-brand-dark">お問い合わせを送信しました</h2>
-                <p className="text-sm text-gray-600 leading-relaxed mb-8">
-                  お問い合わせありがとうございます。<br />
-                  内容を確認のうえ、担当者より折り返しご連絡いたします。
-                </p>
-                <Link
-                  to="/"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-dark text-white text-sm tracking-widest hover:bg-brand-accent transition-colors duration-300"
-                >
-                  トップページに戻る
-                </Link>
-              </div>
-            </FadeIn>
-          ) : (
-            <FadeIn>
-              <form onSubmit={handleSubmit} noValidate className="bg-white p-8 md:p-12 shadow-sm space-y-8">
-                {/* スパム対策（ハニーポット：人には見えません。通常は空のまま） */}
-                <input
-                  type="text"
-                  name="botcheck"
-                  value={honeypot}
-                  onChange={(e) => setHoneypot(e.target.value)}
-                  className="hidden"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                />
+          <FadeIn>
+            <form onSubmit={handleSubmit} noValidate className="bg-white p-8 md:p-12 shadow-sm space-y-8">
+              {/* スパム対策（ハニーポット：人には見えません。通常は空のまま） */}
+              <input
+                type="text"
+                name="botcheck"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
 
-                {/* Name / Company */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-brand-dark mb-2">
-                      お名前 <span className="text-brand-accent">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="山田 太郎"
-                      className={inputBase}
-                    />
-                    {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-brand-dark mb-2">
-                      会社名・屋号 <span className="text-gray-400 text-xs">(任意)</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="company"
-                      value={form.company}
-                      onChange={handleChange}
-                      placeholder="株式会社〇〇"
-                      className={inputBase}
-                    />
-                  </div>
-                </div>
-
-                {/* Email / Phone */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-brand-dark mb-2">
-                      メールアドレス <span className="text-brand-accent">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="example@mail.com"
-                      className={inputBase}
-                    />
-                    {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-brand-dark mb-2">
-                      電話番号 <span className="text-gray-400 text-xs">(任意)</span>
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      placeholder="090-1234-5678"
-                      className={inputBase}
-                    />
-                  </div>
-                </div>
-
-                {/* Consult type */}
-                <div>
-                  <label className="block text-sm font-medium text-brand-dark mb-3">
-                    ご相談内容 <span className="text-brand-accent">*</span>
-                    <span className="text-gray-400 text-xs ml-2">(複数選択可)</span>
-                  </label>
-                  <div className="flex flex-wrap gap-3">
-                    {CONSULT_OPTIONS.map((option) => {
-                      const active = form.consult.includes(option);
-                      return (
-                        <button
-                          type="button"
-                          key={option}
-                          onClick={() => toggleConsult(option)}
-                          className={`px-4 py-2 text-sm border transition-colors duration-200 ${
-                            active
-                              ? 'bg-brand-dark text-white border-brand-dark'
-                              : 'bg-white text-gray-600 border-gray-300 hover:border-brand-accent'
-                          }`}
-                        >
-                          {option}
-                        </button>
-                      );
-                    })}
-                  </div>
-                  {errors.consult && <p className="text-xs text-red-500 mt-2">{errors.consult}</p>}
-                </div>
-
-                {/* Budget */}
+              {/* Name / Company */}
+              <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-brand-dark mb-2">
-                    ご予算感 <span className="text-gray-400 text-xs">(任意)</span>
+                    お名前 <span className="text-brand-accent">*</span>
                   </label>
-                  <select name="budget" value={form.budget} onChange={handleChange} className={inputBase}>
-                    <option value="">選択してください</option>
-                    {BUDGET_OPTIONS.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label className="block text-sm font-medium text-brand-dark mb-2">
-                    お問い合わせ内容 <span className="text-brand-accent">*</span>
-                  </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
+                  <input
+                    type="text"
+                    name="name"
+                    value={form.name}
                     onChange={handleChange}
-                    rows={6}
-                    placeholder="ご相談したい内容や、現在お困りのことをお聞かせください。"
-                    className={`${inputBase} resize-y`}
+                    placeholder="山田 太郎"
+                    className={inputBase}
                   />
-                  {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
+                  {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
                 </div>
+                <div>
+                  <label className="block text-sm font-medium text-brand-dark mb-2">
+                    会社名・屋号 <span className="text-gray-400 text-xs">(任意)</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="company"
+                    value={form.company}
+                    onChange={handleChange}
+                    placeholder="株式会社〇〇"
+                    className={inputBase}
+                  />
+                </div>
+              </div>
 
-                {sendError && (
-                  <p className="text-sm text-red-500 text-center leading-relaxed">{sendError}</p>
-                )}
+              {/* Email / Phone */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-brand-dark mb-2">
+                    メールアドレス <span className="text-brand-accent">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="example@mail.com"
+                    className={inputBase}
+                  />
+                  {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-brand-dark mb-2">
+                    電話番号 <span className="text-gray-400 text-xs">(任意)</span>
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="090-1234-5678"
+                    className={inputBase}
+                  />
+                </div>
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={sending}
-                  className="group w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-dark text-white text-sm tracking-widest hover:bg-brand-accent transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  {sending ? '送信中…' : 'この内容で相談する'}
-                  {!sending && <Send size={16} className="group-hover:translate-x-1 transition-transform" />}
-                </button>
+              {/* Consult type */}
+              <div>
+                <label className="block text-sm font-medium text-brand-dark mb-3">
+                  ご相談内容 <span className="text-brand-accent">*</span>
+                  <span className="text-gray-400 text-xs ml-2">(複数選択可)</span>
+                </label>
+                <div className="flex flex-wrap gap-3">
+                  {CONSULT_OPTIONS.map((option) => {
+                    const active = form.consult.includes(option);
+                    return (
+                      <button
+                        type="button"
+                        key={option}
+                        onClick={() => toggleConsult(option)}
+                        className={`px-4 py-2 text-sm border transition-colors duration-200 ${
+                          active
+                            ? 'bg-brand-dark text-white border-brand-dark'
+                            : 'bg-white text-gray-600 border-gray-300 hover:border-brand-accent'
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    );
+                  })}
+                </div>
+                {errors.consult && <p className="text-xs text-red-500 mt-2">{errors.consult}</p>}
+              </div>
 
-                <p className="text-xs text-gray-400 text-center leading-relaxed">
-                  送信ボタンを押すと、ご入力内容がそのまま運営者へ送信されます。<br className="hidden sm:block" />
-                  通常1〜2営業日以内にご返信いたします。
-                </p>
-              </form>
-            </FadeIn>
-          )}
+              {/* Budget */}
+              <div>
+                <label className="block text-sm font-medium text-brand-dark mb-2">
+                  ご予算感 <span className="text-gray-400 text-xs">(任意)</span>
+                </label>
+                <select name="budget" value={form.budget} onChange={handleChange} className={inputBase}>
+                  <option value="">選択してください</option>
+                  {BUDGET_OPTIONS.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Message */}
+              <div>
+                <label className="block text-sm font-medium text-brand-dark mb-2">
+                  お問い合わせ内容 <span className="text-brand-accent">*</span>
+                </label>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  rows={6}
+                  placeholder="ご相談したい内容や、現在お困りのことをお聞かせください。"
+                  className={`${inputBase} resize-y`}
+                />
+                {errors.message && <p className="text-xs text-red-500 mt-1">{errors.message}</p>}
+              </div>
+
+              {sendError && (
+                <p className="text-sm text-red-500 text-center leading-relaxed">{sendError}</p>
+              )}
+
+              <button
+                type="submit"
+                disabled={sending}
+                className="group w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-dark text-white text-sm tracking-widest hover:bg-brand-accent transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {sending ? '送信中…' : 'この内容で相談する'}
+                {!sending && <Send size={16} className="group-hover:translate-x-1 transition-transform" />}
+              </button>
+
+              <p className="text-xs text-gray-400 text-center leading-relaxed">
+                送信ボタンを押すと、ご入力内容がそのまま運営者へ送信されます。<br className="hidden sm:block" />
+                通常1〜2営業日以内にご返信いたします。
+              </p>
+            </form>
+          </FadeIn>
 
           {/* Direct contact */}
           <FadeIn delay={0.2}>

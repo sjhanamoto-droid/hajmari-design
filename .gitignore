@@ -36,3 +36,6 @@ build
 # Original images backup (pre-WebP, kept locally, not deployed)
 image-backup
 .vercel
+
+# OMC runtime state (local only)
+.omc/
