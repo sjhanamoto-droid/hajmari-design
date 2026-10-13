@@ -371,9 +371,9 @@ const Home: React.FC = () => {
                 <Handshake size={26} />
               </div>
               <div>
-                <h3 className="text-lg font-serif mb-2 text-brand-dark">お金と手続きのことも、まとめて。</h3>
+                <h3 className="text-lg font-serif mb-2 text-brand-dark">お金と手続きのことも、まとめて</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  提携している財務顧問と税理士がいるので、資金調達や税務のことも、あわせて相談できます。
+                  財務顧問/税理士パートナーと連携し、資金調達や税務のことも、あわせてご相談ください。
                 </p>
               </div>
             </div>
