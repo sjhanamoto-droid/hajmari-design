@@ -67,10 +67,10 @@ const reasons = [
 
 // ⑤ こんな方へ（対象）
 const targets = [
-  { Icon: Rocket, text: 'これから事業を始める人、会社をつくったばかりの人' },
-  { Icon: Fingerprint, text: '他社と同じようなサイトにしたくない人' },
-  { Icon: Wrench, text: '紙や電話が中心の仕事、現場のある仕事を、AIで軽くしたい人' },
-  { Icon: Compass, text: 'AIを入れたいが、最初の一歩が分からない人' },
+  { Icon: Rocket, text: 'これから事業を始める方、会社をつくったばかりの方' },
+  { Icon: Fingerprint, text: '他社と同じようなサイトにしたくない方' },
+  { Icon: Wrench, text: '紙や電話が中心の仕事、現場のある仕事を、AIで軽くしたい方' },
+  { Icon: Compass, text: 'AIを入れたいが、最初の一歩が分からない方' },
 ];
 
 // 開発・制作事例
