@@ -58,7 +58,7 @@ const Thanks: React.FC = () => {
             </h1>
             <p className="text-sm md:text-base text-gray-600 leading-8 max-w-2xl mx-auto">
               内容を確認のうえ、担当者より折り返しご連絡いたします。<br className="hidden md:block" />
-              事業のはじまりを、いちばん近い場所からご一緒させてください。
+              はじまりのいちばん近くで、一緒に考えさせてください。
             </p>
           </FadeIn>
         </div>

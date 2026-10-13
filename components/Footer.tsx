@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 border-b border-gray-700 pb-10 mb-10">
           <div>
             <h2 className="text-3xl font-serif font-bold tracking-widest mb-2">HAJMARI</h2>
-            <p className="text-gray-400 text-sm">はじめる会社の、いちばん頼れる味方。</p>
+            <p className="text-gray-400 text-sm">はじめる会社の、パートナーになる。</p>
           </div>
           <div className="flex gap-6">
             <a href="https://www.instagram.com/masaskate" className="hover:text-brand-accent transition-colors"><Instagram size={24} /></a>

@@ -9,25 +9,25 @@ const steps = [
     Icon: Search,
     step: '01',
     title: '業務を知る',
-    text: '現状の業務の流れ・課題をヒアリング。ゼロから作るのではなく、既にある仕組みを起点に考えます。',
+    text: 'いまの仕事の流れと、困っていることを聞かせてもらいます。ゼロからつくるのではなく、すでにある仕組みから考えます。',
   },
   {
     Icon: PenTool,
     step: '02',
     title: '体験から設計',
-    text: 'UI/UXの視点で、使う人にとって「本当に使われる」形を設計。現場に馴染む導線を描きます。',
+    text: '使う人の目線で、毎日使われる形を設計します。現場に馴染む動線を描きます。',
   },
   {
     Icon: Cpu,
     step: '03',
     title: 'AIで作り込む',
-    text: 'AIを活用し、その会社専用のオリジナルシステムへ。パッと出力して終わりにせず、作り込みます。',
+    text: 'AIを使って、その会社だけのシステムに仕上げます。出力して終わりにせず、作り込みます。',
   },
   {
     Icon: Rocket,
     step: '04',
-    title: '運用まで伴走',
-    text: '作って終わりにしない。動画・ロゴ・運用まで、仕事の方法そのものに関わり続けます。',
+    title: '使い始めてからも',
+    text: 'つくって終わりにしない。使い方を伝え、使ってみて出てきた不満を直す。動画やロゴも含めて、仕事のやり方そのものに関わり続けます。',
   },
 ];
 
@@ -51,8 +51,8 @@ const creative = [
 const services = [
   'AIを活用した業務効率化・業務改善システムの開発',
   '会社に合わせたオリジナルシステムの設計・構築',
-  'ホームページ制作（写真・映像でオリジナルに）',
-  'AI活用のアドバイス・使い方の伴走支援',
+  'ホームページ制作（自社撮影の写真・映像で）',
+  'AI活用の相談・使い方のサポート',
   '写真撮影（ドローン空撮含む）・映像制作',
   'ロゴ・グラフィックなどのデザイン',
   '導入後の運用サポート・改善提案',
@@ -78,8 +78,8 @@ const HajimariAI: React.FC = () => {
           </FadeIn>
           <FadeIn delay={0.3}>
             <p className="text-base md:text-xl text-gray-600 font-serif leading-relaxed max-w-2xl">
-              写真も、映像も、システムも。すべて、オリジナルで。<br className="hidden md:block" />
-              安く・早く・高品質な、あなただけのWEBとシステムを。
+              システムをつくる。サイトをつくる。写真も映像も、自分たちで撮る。<br className="hidden md:block" />
+              事業のはじまりを、仕組みと見せ方の両方から支えます。
             </p>
           </FadeIn>
         </div>
@@ -96,12 +96,12 @@ const HajimariAI: React.FC = () => {
               </h2>
               <div className="space-y-6 text-gray-600 leading-8">
                 <p>
-                  システム開発というと、すべてを一から作り上げる大掛かりなものを想像しがちです。
-                  しかしAIを活用すれば、既にある業務の流れを起点に、最短距離で「会社にフィットする仕組み」をつくることができます。
+                  システム開発と聞くと、すべてを一から組み上げる大がかりなものを想像するかもしれません。
+                  けれどAIを使えば、いまある仕事の流れを起点に、その会社に合う仕組みを短い道のりでつくれます。
                 </p>
                 <p>
-                  HAJMARI は、AIでパッと出力して終わりにするのではなく、その会社専用のオリジナルシステムへと作り込みます。
-                  UI/UXデザインからシステム開発に携わってきた経験を活かし、現場で本当に使われるものを、運用まで伴走しながら形にします。
+                  HAJMARI は、AIに出させて終わりにはしません。その会社だけのシステムになるまで作り込みます。
+                  UI/UXデザインからシステム開発まで携わってきた経験をもとに、現場で使われるものを、使い始めたあとまで一緒に形にしていきます。
                 </p>
               </div>
             </FadeIn>
@@ -118,7 +118,7 @@ const HajimariAI: React.FC = () => {
               <div className="bg-brand-light p-8 md:p-10">
                 <p className="text-xs tracking-widest text-brand-accent font-medium mb-6">HAJMARI が関わる領域</p>
                 <StaggerContainer className="space-y-4">
-                  {['AIシステム開発・業務改善', 'ホームページ制作', '写真・映像・ドローン撮影', 'デザイン（ロゴ・グラフィック）', 'AI活用のアドバイス・伴走'].map((item) => (
+                  {['AIシステム開発・業務改善', 'ホームページ制作', '写真・映像・ドローン撮影', 'デザイン（ロゴ・グラフィック）', 'AI活用の相談・サポート'].map((item) => (
                     <StaggerItem key={item} className="flex items-center gap-3">
                       <CheckCircle className="text-brand-accent flex-shrink-0" size={18} />
                       <span className="text-sm text-brand-dark">{item}</span>
@@ -166,6 +166,9 @@ const HajimariAI: React.FC = () => {
             <FadeIn>
               <span className="text-xs font-bold tracking-[0.2em] text-brand-accent mb-4 block">WORKS</span>
               <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">開発事例</h2>
+              <p className="text-sm text-gray-500 mt-6 max-w-xl mx-auto leading-relaxed">
+                どれも、ひとつの会社の困りごとから生まれたシステムです。
+              </p>
             </FadeIn>
           </div>
           <StaggerContainer className="grid sm:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
@@ -194,10 +197,10 @@ const HajimariAI: React.FC = () => {
           <div className="text-center mb-16">
             <FadeIn>
               <span className="text-xs font-bold tracking-[0.2em] text-brand-accent mb-4 block">CREATIVE</span>
-              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">写真も、映像も、自社で。</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">写真も、映像も、自分たちで。</h2>
               <p className="text-sm text-gray-500 mt-6 max-w-xl mx-auto leading-relaxed">
-                WEBに使う素材は、外注のストック写真ではありません。撮影・映像・ドローンまで一貫して自社対応。
-                だから“どこかで見た”にならない、あなただけのサイトになります。
+                サイトに使う素材は、借りもののストック写真ではありません。写真・映像・ドローン空撮まで自分たちで撮る。
+                だから、どこにもないサイトになります。
               </p>
             </FadeIn>
           </div>

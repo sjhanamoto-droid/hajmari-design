@@ -29,48 +29,48 @@ const values = [
   {
     no: '01',
     Icon: Sparkles,
-    title: 'AI × オリジナル素材',
-    text: 'AIの効率と、人の手による撮影素材。両方を掛け合わせるから、コストを抑えながら独自性と信頼感を両立できます。',
+    title: 'AI × 自社撮影素材',
+    text: 'AIを最大限活用し、かつ素材は人の手で撮る。効率と手触りを分けて考えるからこそ、費用を抑えても、ありきたりにならないサイトを提供します。',
   },
   {
     no: '02',
     Icon: Cpu,
-    title: '使いやすいシステム開発',
-    text: '属人性をなくし、誰でも迷わず使えるオリジナルシステムを構築。「AIを導入したいけど何から始めれば…」という段階からご一緒します。',
+    title: '現場で使われるシステム開発',
+    text: '誰か一人しか分からない仕事を、誰でも回せる仕組みにする。「AIを入れたいが、何から手をつければいいか分からない」。その段階から一緒に始めています。',
   },
   {
     no: '03',
     Icon: Camera,
     title: '撮影・映像制作',
-    text: '写真、映像、ドローン撮影まで一貫対応。WEBサイトと素材をまとめて任せられるので、手間もコストも最小限に。',
+    text: '写真、映像、ドローン空撮まで自分たちで撮る。サイトと素材を同じ手でつくるから、やり取りも費用も少なく済みます。',
   },
 ];
 
-// ④ 選ばれる理由（なぜ、相棒なのか。）
+// ④ 選ばれる理由（なぜ、パートナーなのか。）
 const reasons = [
   {
     Icon: HeartHandshake,
-    title: 'はじまりの不安に、伴走します。',
-    text: 'これから事業を始める方、会社を立ち上げたばかりの方。何が必要かわからない段階から、一緒に考えます。',
+    title: 'はじまりに、一緒に立つ。',
+    text: '事業を始める前、会社をつくったばかりの頃は、何が必要かも分からない。だから、そこから一緒に考えます。',
   },
   {
     Icon: Eye,
-    title: '現場を知っているから、伝わる。',
-    text: '写真撮影をはじめ、これまで多種多様な現場・職種を経験してきました。だからこそ、机上の空論ではなく、現場が本当に見える目線で、AI活用・業務改善をご提案できます。',
+    title: '現場を知っている。',
+    text: '写真撮影をはじめ、いくつもの現場と職種を経験してきた。机の上ではなく、現場の目線でAI活用と業務改善を考えています。',
   },
   {
     Icon: LifeBuoy,
-    title: 'つくって終わり、にしません。',
-    text: '使い方のアドバイスや導入後の改善まで。技術に詳しくなくても、ずっと頼れるパートナーであり続けます。',
+    title: 'つくって終わりにしない。',
+    text: '使い方を伝える。使ってみて出てきた不満を直す。技術に詳しくなくても、ずっと相談できる相手でいます。',
   },
 ];
 
 // ⑤ こんな方へ（対象）
 const targets = [
-  { Icon: Rocket, text: 'これから事業を始める方・会社を立ち上げたばかりの方' },
-  { Icon: Fingerprint, text: '「他社と似たサイトにしたくない」方' },
-  { Icon: Wrench, text: 'アナログな業態や現場のある仕事で、AIを使った業務改善をしたい方' },
-  { Icon: Compass, text: 'AIを導入したいが、何から始めればいいか分からない方' },
+  { Icon: Rocket, text: 'これから事業を始める人、会社をつくったばかりの人' },
+  { Icon: Fingerprint, text: '他社と同じようなサイトにしたくない人' },
+  { Icon: Wrench, text: '紙や電話が中心の仕事、現場のある仕事を、AIで軽くしたい人' },
+  { Icon: Compass, text: 'AIを入れたいが、最初の一歩が分からない人' },
 ];
 
 // 開発・制作事例
@@ -98,14 +98,14 @@ const Home: React.FC = () => {
               <FadeIn>
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-medium leading-relaxed md:leading-tight mb-10 text-brand-dark">
                   はじめる会社の、<br />
-                  いちばん頼れる味方。
+                  パートナーになる。
                 </h1>
               </FadeIn>
               <FadeIn delay={0.3}>
                 <p className="text-sm md:text-base leading-8 text-gray-600 mb-12 max-w-lg">
-                  AIを活用したシステム開発とWEBサイト制作。<br />
-                  写真も映像も自社で撮るから、“どこかで見たようなサイト”にはなりません。<br className="hidden md:block" />
-                  あなたの事業のはじまりを、速く・安く・高品質に支えます。
+                  システムをつくる。サイトをつくる。写真も映像も、自分たちで撮る。<br className="hidden md:block" />
+                  借りものの素材は使わないから、どこにもないサイトになります。<br className="hidden md:block" />
+                  事業のはじまりを、仕組みと見せ方の両方から支えています。
                 </p>
               </FadeIn>
               <FadeIn delay={0.45}>
@@ -157,18 +157,18 @@ const Home: React.FC = () => {
           </FadeIn>
           <FadeIn delay={0.2}>
             <h2 className="text-2xl md:text-4xl font-serif leading-relaxed md:leading-normal mb-12 text-brand-dark">
-              AIで、誰でも簡単にサイトが作れる時代。<br />
-              だからこそ、<HighlightText>“みんなと同じ”</HighlightText><br />
-              になっていませんか？
+              誰でもサイトが作れる時代に、<br />
+              <HighlightText>何をつくるのか。</HighlightText>
             </h2>
           </FadeIn>
           <FadeIn delay={0.4}>
             <p className="text-gray-600 leading-9 font-light">
-              テンプレートやAI生成画像でつくられたサイトは、<br className="hidden md:block" />
-              便利な反面、どれも似た印象になりがちです。<br />
+              AIを使えば、サイトは一日でできる。<br className="hidden md:block" />
+              けれど、テンプレートと生成画像でできたサイトは、どれも同じ顔をしています。<br />
               <br />
-              私たちは、自社で撮影する写真・映像・ドローン素材を組み合わせることで、<br className="hidden md:block" />
-              安く・速く・高品質なうえに、<span className="text-brand-dark font-normal">“あなただけ”</span>のWEBサイトをつくります。
+              私たちは、自分たちで撮った写真・映像・ドローン素材でサイトを制作します。<br className="hidden md:block" />
+              <span className="text-brand-dark font-normal">その会社にしかない景色</span>を、そのまま載せる。<br className="hidden md:block" />
+              手間と費用はAIで抑え、浮いた分を「らしさ」にかけています。
             </p>
           </FadeIn>
 
@@ -216,7 +216,7 @@ const Home: React.FC = () => {
                 </div>
               </div>
 
-              <p className="text-xs text-gray-400 text-center">※価格は目安です。詳細な料金プランは別途ご案内します。</p>
+              <p className="text-xs text-gray-400 text-center">※価格は目安です。内容に合わせてお見積りします。</p>
             </div>
           </FadeIn>
         </div>
@@ -248,7 +248,7 @@ const Home: React.FC = () => {
           <div className="text-center mb-16">
             <FadeIn>
               <span className="text-xs font-bold tracking-[0.2em] text-brand-accent mb-4 block">VALUE</span>
-              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">私たちが提供できること</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">私たちがやっていること</h2>
               <div className="w-10 h-[2px] bg-brand-accent mx-auto mt-6"></div>
             </FadeIn>
           </div>
@@ -279,7 +279,7 @@ const Home: React.FC = () => {
           <div className="text-center mb-16">
             <FadeIn>
               <span className="text-xs font-bold tracking-[0.2em] text-brand-accent mb-4 block">WHY</span>
-              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">なぜ、相棒なのか。</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">なぜ、パートナーなのか。</h2>
               <div className="w-10 h-[2px] bg-brand-accent mx-auto mt-6"></div>
             </FadeIn>
           </div>
@@ -311,7 +311,7 @@ const Home: React.FC = () => {
               <span className="text-xs font-bold tracking-[0.2em] text-brand-accent mb-4 block">WORKS</span>
               <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">開発・制作事例</h2>
               <p className="text-sm text-gray-500 mt-6 max-w-xl mx-auto leading-relaxed">
-                AIを活用し、会社ごとの課題に合わせて作り上げたオリジナルの一例です。
+                どれも、ひとつの会社の困りごとから生まれたシステムです。
               </p>
             </FadeIn>
           </div>
@@ -342,7 +342,7 @@ const Home: React.FC = () => {
           <div className="text-center mb-14">
             <FadeIn>
               <span className="text-xs font-bold tracking-[0.2em] text-brand-accent mb-4 block">FOR YOU</span>
-              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">こんな方へ</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">一緒に仕事をしたい人</h2>
             </FadeIn>
           </div>
 
@@ -371,9 +371,9 @@ const Home: React.FC = () => {
                 <Handshake size={26} />
               </div>
               <div>
-                <h3 className="text-lg font-serif mb-2 text-brand-dark">お金や手続きの相談も、まとめてどうぞ。</h3>
+                <h3 className="text-lg font-serif mb-2 text-brand-dark">お金と手続きのことも、まとめて。</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  資金調達や税務関連など、なんでもご相談ください！
+                  資金調達や税務のことも、相談を受けています。
                 </p>
               </div>
             </div>
@@ -392,8 +392,8 @@ const Home: React.FC = () => {
         <div className="relative z-10 h-full flex items-center justify-center text-center px-6">
           <FadeIn>
             <p className="text-white font-serif text-xl md:text-3xl leading-relaxed md:leading-loose drop-shadow-lg">
-              “らしさ”は、既製品では生まれない。<br />
-              だから私たちは、自分たちの手で撮る。
+              らしさは、既製品からは生まれない。<br />
+              だから、自分たちの手で撮ります。
             </p>
           </FadeIn>
         </div>
@@ -404,12 +404,12 @@ const Home: React.FC = () => {
         <div className="container mx-auto px-6 max-w-3xl text-center">
           <FadeIn>
             <h2 className="text-2xl md:text-4xl font-serif mb-8 leading-relaxed">
-              あなたの事業のはじまりに、<br />
-              いちばん近い味方であり続けます。
+              はじまりのいちばん近くに、<br />
+              いつもいる。
             </h2>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <p className="text-sm text-gray-400 mb-10 leading-relaxed">まずはお気軽にご相談ください！</p>
+            <p className="text-sm text-gray-400 mb-10 leading-relaxed">まずは、話を聞かせてください。</p>
             <Link
               to="/contact"
               className="group inline-flex items-center gap-2 px-12 py-4 bg-white text-brand-dark text-sm tracking-widest hover:bg-brand-accent hover:text-white transition-colors duration-300"

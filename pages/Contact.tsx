@@ -150,11 +150,11 @@ const Contact: React.FC = () => {
               CONTACT
             </span>
             <h1 className="text-3xl md:text-5xl font-serif font-medium mb-6 text-brand-dark">
-              まずはお気軽に、<br className="md:hidden" />ご相談ください。
+              まずは、<br className="md:hidden" />話を聞かせてください。
             </h1>
             <p className="text-sm md:text-base text-gray-600 leading-8 max-w-2xl mx-auto">
               WEB制作・システム開発・業務改善・撮影まで。<br className="hidden md:block" />
-              「何から始めれば…」という段階でも大丈夫です。あなたの事業のはじまりに、いちばん近い味方として伴走します。
+              「何から手をつければいいか分からない」段階でも大丈夫です。事業のはじまりから、一緒に考えます。
             </p>
           </FadeIn>
         </div>

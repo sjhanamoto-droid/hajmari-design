@@ -157,15 +157,15 @@ const Photographer: React.FC = () => {
                 撮る人が、そのまま<br className="md:hidden" />「Webサイト」まで作る。
               </h2>
               <p className="text-base md:text-lg text-gray-300 font-light leading-8 max-w-3xl mx-auto">
-                AIで、誰でも同じようなWebサイトが作れる時代。<br className="hidden md:block" />
-                だからこそ、本物の写真が「オリジナリティ」と「信頼」をつくります。
+                誰でもサイトが作れる時代に、何で違いをつくるのか。<br className="hidden md:block" />
+                答えは、その会社にしかない景色を、自分たちで撮ることです。
               </p>
             </FadeIn>
           </div>
 
           <FadeIn delay={0.15}>
             <p className="text-gray-400 leading-8 max-w-3xl mx-auto text-center mb-16 text-sm md:text-base">
-              撮影からWeb制作までを、フォトグラファー自身が一貫して担当。外注のストック写真ではなく、あなたのための一枚でサイトを組み立てます。だから“どこかで見た”にならない、あなただけのサイトになります。
+              撮影からWeb制作まで、フォトグラファー自身が手がけます。借りものの素材は使わず、その会社のために撮った写真でサイトを組み立てる。サイトと素材を同じ手でつくるから、やり取りも費用も少なく済みます。
             </p>
           </FadeIn>
 
@@ -197,20 +197,20 @@ const Photographer: React.FC = () => {
               </div>
               <h3 className="text-xl font-serif font-bold mb-6">写真撮影</h3>
               <div>
-                <span className="inline-block bg-brand-accent/10 text-brand-accent text-sm font-bold px-3 py-1 rounded-full">別途オプション</span>
+                <span className="inline-block bg-brand-accent/10 text-brand-accent text-sm font-bold px-3 py-1 rounded-full">WEB制作とセット</span>
               </div>
               <div className="flex items-end gap-1 mt-5 mb-4">
                 <span className="text-4xl font-bold">¥30,000</span>
                 <span className="text-lg text-gray-500 mb-1">〜</span>
               </div>
               <p className="text-sm text-gray-600 leading-relaxed mt-auto">
-                ポートレート・物件・空撮に対応。サイトに合わせて、オリジナルの撮影を行います。
+                ポートレート・物件・空撮に対応。サイトに合わせて撮り下ろします。撮影のみのご依頼は5万円〜。
               </p>
             </StaggerItem>
           </StaggerContainer>
 
           <p className="text-center text-xs text-gray-500 mt-8">
-            ※価格は目安です。内容・ボリュームに応じてお見積もりいたします。
+            ※価格は目安です。内容に合わせてお見積りします。
           </p>
 
           <FadeIn delay={0.2}>
