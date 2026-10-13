@@ -342,7 +342,7 @@ const Home: React.FC = () => {
           <div className="text-center mb-14">
             <FadeIn>
               <span className="text-xs font-bold tracking-[0.2em] text-brand-accent mb-4 block">FOR YOU</span>
-              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">一緒に仕事をしたい人</h2>
+              <h2 className="text-3xl md:text-4xl font-serif text-brand-dark">こんな方に、選ばれています。</h2>
             </FadeIn>
           </div>
 
