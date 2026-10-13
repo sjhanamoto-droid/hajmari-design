@@ -209,7 +209,7 @@ const Home: React.FC = () => {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-x-5 gap-y-2">
                   <span className="text-xs font-bold tracking-[0.2em] text-brand-accent">オリジナルシステム開発</span>
                   <span className="flex items-baseline gap-1 text-brand-dark">
-                    <span className="text-3xl md:text-4xl font-bold">10</span>
+                    <span className="text-3xl md:text-4xl font-bold">20</span>
                     <span className="text-base font-bold">万円</span>
                     <span className="text-base text-gray-500">〜</span>
                   </span>
