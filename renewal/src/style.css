@@ -382,6 +382,33 @@ a:hover > .dot-arw, a:hover .more .dot-arw, .more:hover .dot-arw { width: 44px; 
 .bubble--a .dot-arw { background: #22b8dc; color: #0a1530; }
 .contact__text { position: relative; z-index: 1; align-self: start; max-width: 24em; min-width: 14em; font-size: 15px; line-height: 2; }
 .contact__cat { position: absolute; right: 0; bottom: clamp(-150px, -9vw, -90px); width: clamp(120px, 14vw, 210px); transform-origin: 50% 100%; animation: wave 2.4s ease-in-out infinite; }
+.contact__cat { display: block; padding: 0; border: 0; background: none; cursor: pointer; z-index: 2; }
+.contact__cat:focus-visible { outline: 2px solid #6fe0fa; outline-offset: 6px; border-radius: 12px; }
+.contact__catbody { position: relative; transform-origin: 50% 100%; }
+.contact__catbody img { display: block; height: auto; }
+.contact__catbody .cat-back { width: 100%; }
+.contact__catbody .cat-front { position: absolute; bottom: 0; left: 50%; height: 100%; width: auto; max-width: none; transform: translateX(-50%); opacity: 0; }
+.contact__catbody, .contact__catbody img { will-change: transform, opacity; }
+/* クリック：くるっと正面を向く → 笑顔で2回ジャンプ → 後ろ姿へ（約2.6秒） */
+.contact__cat.is-turn { animation-play-state: paused; } /* 揺れはその角度のまま止め、カクッと戻さない */
+.contact__cat.is-turn .contact__catbody { animation: cat-hop 2.6s both; }
+.contact__cat.is-turn .cat-back { animation: cat-back 2.6s ease-in-out both; }
+.contact__cat.is-turn .cat-front { animation: cat-front 2.6s ease-in-out both; }
+@keyframes cat-back { 0%, 4% { opacity: 1; } 11%, 86% { opacity: 0; } 93%, 100% { opacity: 1; } }
+@keyframes cat-front { 0%, 4% { opacity: 0; } 11%, 86% { opacity: 1; } 93%, 100% { opacity: 0; } }
+@keyframes cat-hop {
+  0% { transform: none; animation-timing-function: ease-in-out; }
+  7.5% { transform: scaleX(0.9); animation-timing-function: ease-in-out; }     /* くるっと向きを変える */
+  15% { transform: none; animation-timing-function: ease-in-out; }
+  22% { transform: scale(1.05, 0.93); animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1); } /* しゃがむ */
+  34% { transform: translateY(-20%) scale(0.98, 1.03); animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4); } /* 跳ぶ */
+  45% { transform: scale(1.05, 0.94); animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1); } /* 着地して、もう一度 */
+  56% { transform: translateY(-13%) scale(0.99, 1.02); animation-timing-function: cubic-bezier(0.6, 0, 0.8, 0.4); }
+  66% { transform: scale(1.04, 0.95); animation-timing-function: ease-out; }
+  76% { transform: none; animation-timing-function: ease-in-out; }
+  89.5% { transform: scaleX(0.9); animation-timing-function: ease-in-out; }   /* 後ろを向き直す */
+  100% { transform: none; }
+}
 
 /* =========================================================
    FOOTER

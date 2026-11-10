@@ -540,7 +540,13 @@ export default function App() {
                 業務の困りごと、システム・AI開発、Mielbaの導入について。何をつくるか決まっていない段階でも、お気軽にご相談ください。
               </Rv>
             </div>
-            <img className="contact__cat" src={`${IMG}/hachan-back.webp`} alt="" aria-hidden="true" width="500" height="800" loading="lazy" />
+            {/* 普段は後ろ姿。クリックすると振り向いて、笑顔で跳ねる（motion.ts） */}
+            <button type="button" className="contact__cat" aria-label="はーちゃんを振り向かせる">
+              <div className="contact__catbody">
+                <img className="cat-back" src={`${IMG}/hachan-back.webp`} alt="" width="500" height="800" loading="lazy" />
+                <img className="cat-front" src={`${IMG}/hachan-front.webp`} alt="" width="526" height="800" loading="lazy" />
+              </div>
+            </button>
           </div>
         </section>
       </main>

@@ -172,12 +172,29 @@ export function initMotion(root: HTMLElement): () => void {
     request();
   };
 
+  /* ---- Contact：後ろ姿のはーちゃんをクリックすると、振り向いて跳ねる ---- */
+  const cat = $('.contact__cat');
+  const playCat = () => {
+    // 再生中のクリックは無視して、最後まで見せる
+    if (!cat || cat.classList.contains('is-turn') || document.documentElement.dataset.motion === 'off') return;
+    cat.classList.add('is-turn');
+  };
+  const endCat = (e: AnimationEvent) => {
+    if (e.animationName === 'cat-hop') cat?.classList.remove('is-turn');
+  };
+  if (cat && !reduced) {
+    cat.addEventListener('click', playCat);
+    cat.addEventListener('animationend', endCat);
+  }
+
   window.addEventListener('scroll', request, { passive: true });
   window.addEventListener('resize', onResize);
   request();
 
   return () => {
     cancelAnimationFrame(raf);
+    cat?.removeEventListener('click', playCat);
+    cat?.removeEventListener('animationend', endCat);
     io?.disconnect();
     window.removeEventListener('scroll', request);
     window.removeEventListener('resize', onResize);
