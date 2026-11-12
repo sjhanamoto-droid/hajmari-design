@@ -438,10 +438,8 @@ a:hover > .dot-arw, a:hover .more .dot-arw, .more:hover .dot-arw { width: 44px; 
 .chero__traces .pad { fill: #0a1530; animation: padpop 0.35s 1.7s cubic-bezier(0.3, 1.6, 0.5, 1) forwards; }
 .chero__traces .pulse { opacity: 1; animation: pulse 3.4s 2.2s linear infinite; }
 .chero__inner { position: relative; }
-.chero__eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: 0.14em; color: #6fe0fa; margin-bottom: 14px; animation: fadeup 0.9s 0.1s var(--ease) both; }
-.chero .contact__title { font-size: clamp(60px, 12vw, 190px); }
+.chero .contact__title { font-size: clamp(72px, 15vw, 240px); }
 .chero .contact__title .ch { transition-delay: calc(0.2s + var(--i) * 45ms); }
-.chero .contact__title .ch.on:nth-last-child(-n + 5) { color: #6fe0fa; -webkit-text-stroke-color: #6fe0fa; }
 .chero__lead { margin-top: clamp(24px, 3vw, 44px); font-size: clamp(20px, 2.2vw, 30px); font-weight: 900; line-height: 1.5; animation: fadeup 0.9s 0.5s var(--ease) both; }
 .chero__text { margin-top: 12px; max-width: 40em; font-size: 15px; line-height: 2; color: #c3d3ee; animation: fadeup 0.9s 0.65s var(--ease) both; }
 

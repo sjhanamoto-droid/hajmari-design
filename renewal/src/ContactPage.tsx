@@ -182,9 +182,8 @@ export default function ContactPage() {
             <path className="pulse" pathLength="1" d="M1440 150 H1210 L1160 200 H1010" />
           </svg>
           <div className="wrap chero__inner">
-            <p className="chero__eyebrow">CONTACT</p>
-            <h1 className="contact__title fill" aria-label="Let's talk.">
-              <span className="giant__line" aria-hidden="true"><Chars text="Let's talk." /></span>
+            <h1 className="contact__title fill" aria-label="Contact">
+              <span className="giant__line" aria-hidden="true"><Chars text="Contact" /></span>
             </h1>
             <p className="chero__lead">まずは、困りごとを聞かせてください。</p>
             <p className="chero__text">業務の困りごと、システム・AI開発、Mielbaの導入について。<br />何をつくるか決まっていない段階でも、お気軽にご相談ください。</p>
