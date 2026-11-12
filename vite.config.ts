@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => {
           input: {
             main: path.resolve(__dirname, 'index.html'),
             renewal: path.resolve(__dirname, 'renewal/index.html'),
+            renewalContact: path.resolve(__dirname, 'renewal/contact/index.html'),
           },
         },
       },

@@ -3,7 +3,7 @@ import { createHeroScene, type HeroScene } from './HeroScene';
 import { initMotion } from './motion';
 
 const IMG = '/renewal/images';
-const CONTACT_URL = '/contact'; // 既存サイトのお問い合わせフォーム
+const CONTACT_URL = '/renewal/contact/'; // リニューアル版のお問い合わせページ
 
 const NAV = [
   { href: '#issue', label: 'Issue' },
@@ -45,17 +45,17 @@ const WORKS: { cat: WorkCat; tag: string; title: string }[] = [
 ];
 
 const PROCESS = [
-  { title: '話を聞く', text: 'いまの仕事の流れと、困っていることを伺います。' },
+  { title: 'ヒアリング', text: 'いまの仕事の流れと、困っていることを伺います。' },
   { title: '整理・設計', text: '誰が、どの場面で使うかを決め、画面と仕組みを設計します。' },
   { title: '開発・導入', text: '一緒に確かめながらつくり、現場に入れます。' },
-  { title: '定着・改善', text: '使われ方を見て、続けやすい形に直していきます。' },
+  { title: '伴走・改善', text: '使われ方を見て、続けやすい形に直していきます。' },
 ];
 
 const MARQUEE = ['Workflow Design', 'Custom System', 'AI in Daily Work', 'Mielba for Construction', 'Support after Launch'];
 
 /* ---------- 小さな部品 ---------- */
 
-const Arrow = () => (
+export const Arrow = () => (
   <svg className="arw" viewBox="0 0 16 16" aria-hidden="true">
     <path d="M2.5 8h10M8.5 3.5 13 8l-4.5 4.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
@@ -68,7 +68,7 @@ const ArrowDot = () => (
 );
 
 /** 1文字ずつ <span> に分ける（読み上げは aria-label 側で行う） */
-const Chars = ({ text, from = 0 }: { text: string; from?: number }) => (
+export const Chars = ({ text, from = 0 }: { text: string; from?: number }) => (
   <>
     {Array.from(text).map((c, i) => (
       <span className="ch" key={i} style={{ '--i': from + i } as CSSProperties}>
@@ -101,7 +101,7 @@ const Rv = ({ children, d = 0, className = '', as: Tag = 'div' }: { children: Re
   </Tag>
 );
 
-const MotionToggle = ({ on, onToggle, className = '' }: { on: boolean; onToggle: () => void; className?: string }) => (
+export const MotionToggle = ({ on, onToggle, className = '' }: { on: boolean; onToggle: () => void; className?: string }) => (
   <button type="button" className={`motion-toggle ${className}`} onClick={onToggle} aria-pressed={!on}>
     <span>モーション</span>
     <span className="motion-toggle__icon" aria-hidden="true">
@@ -436,7 +436,7 @@ export default function App() {
               ))}
             </ul>
             <Rv>
-              <a className="btn btn--white" href={CONTACT_URL}>Mielbaについて相談する<ArrowDot /></a>
+              <a className="btn btn--white" href={`${CONTACT_URL}?topic=mielba`}>Mielbaについて相談する<ArrowDot /></a>
             </Rv>
           </div>
         </section>
@@ -529,7 +529,7 @@ export default function App() {
                   <span>業務・開発の相談をする</span>
                   <ArrowDot />
                 </a>
-                <a className="bubble bubble--b rv" href={CONTACT_URL} style={{ '--d': 1 } as CSSProperties}>
+                <a className="bubble bubble--b rv" href={`${CONTACT_URL}?topic=mielba`} style={{ '--d': 1 } as CSSProperties}>
                   <small>Mielba</small>
                   <strong>導入の相談</strong>
                   <span>Mielbaについて相談する</span>

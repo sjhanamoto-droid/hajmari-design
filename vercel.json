@@ -3,6 +3,10 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/renewal/contact",
+      "destination": "/renewal/contact/index.html"
+    },
+    {
       "source": "/renewal",
       "destination": "/renewal/index.html"
     },
